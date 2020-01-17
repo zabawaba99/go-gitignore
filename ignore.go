@@ -145,3 +145,4 @@ func evalDblAsterisk(pattern, value string) bool {
 
 	// Other consecutive asterisks are considered invalid.
 	return false
+}
