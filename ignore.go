@@ -60,6 +60,11 @@ func Match(pattern, value string) bool {
 	// of the .gitignore file (relative to the toplevel of the work tree if not from
 	// a .gitignore file).
 	if !strings.Contains(pattern, string(os.PathSeparator)) {
+		var found bool
+		if pattern == value {
+			found = true
+		}
+
 		m, err := filepath.Glob(pattern)
 		if err != nil {
 			// maybe log this?
@@ -67,7 +72,6 @@ func Match(pattern, value string) bool {
 			return false
 		}
 
-		var found bool
 		for _, v := range m {
 			if v == value {
 				found = true
